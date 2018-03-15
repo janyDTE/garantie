@@ -1,4 +1,5 @@
 package com.beaucornu.garantie;
 
-public class Controller {
+public class mainController {
+
 }
