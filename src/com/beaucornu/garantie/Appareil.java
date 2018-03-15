@@ -1,14 +1,16 @@
 package com.beaucornu.garantie;
 
+import java.time.LocalDate;
+
 public class Appareil {
     private int id_appareil;
     private int id_modele ;
     private int id_client;
     private String no_serie;
     private String no_produit;
-    private String date_facturation;
+    private LocalDate date_facturation;
 
-    public Appareil(int id_appareil, int id_modele, int id_client, String no_serie, String no_produit, String date_facturation) {
+    public Appareil(int id_appareil, int id_modele, int id_client, String no_serie, String no_produit, LocalDate date_facturation) {
         this.id_appareil = id_appareil;
         this.id_modele = id_modele;
         this.id_client = id_client;
@@ -17,8 +19,15 @@ public class Appareil {
         this.date_facturation = date_facturation;
     }
 
+    public Appareil() {
+    }
+
     public int getId_appareil() {
         return id_appareil;
+    }
+
+    public void setId_appareil(int id_appareil) {
+        this.id_appareil = id_appareil;
     }
 
     public int getId_modele() {
@@ -53,11 +62,11 @@ public class Appareil {
         this.no_produit = no_produit;
     }
 
-    public String getDate_facturation() {
+    public LocalDate getDate_facturation() {
         return date_facturation;
     }
 
-    public void setDate_facturation(String date_facturation) {
+    public void setDate_facturation(LocalDate date_facturation) {
         this.date_facturation = date_facturation;
     }
 }

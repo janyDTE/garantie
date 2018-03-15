@@ -31,8 +31,7 @@ import javafx.util.Callback;
  * @see <a href="http://www.blog.ngopal.com.np"> Blog </a>
  */
 public class AutoFillTextBoxSkin<T> extends SkinBase<AutoFillTextBox<T>>
-        implements ChangeListener<String>,
-        EventHandler {
+        implements ChangeListener<String>, EventHandler {
 
     //Final Static variables for Window Insets
     private final static int TITLE_HEIGHT = 28;
@@ -176,7 +175,9 @@ public class AutoFillTextBoxSkin<T> extends SkinBase<AutoFillTextBox<T>>
 
         //list data and sorted ordered
         data = text.getData();
-        FXCollections.sort(data);
+
+        //ERROR : commented the following because, apparently, it doesn't allow sorting of an object
+        //FXCollections.sort(data);
 
         //Adding textbox in this control Children
         getChildren().addAll(textbox);
@@ -314,9 +315,9 @@ public class AutoFillTextBoxSkin<T> extends SkinBase<AutoFillTextBox<T>>
         listview.setPrefWidth(textbox.getWidth());
 
         if (listview.getItems().size() > 6) {
-            listview.setPrefHeight((6 * 50));
+            listview.setPrefHeight((6 * 25));
         } else {
-            listview.setPrefHeight((listview.getItems().size() * 50));
+            listview.setPrefHeight((listview.getItems().size() * 25));
         }
 
 //        listview.impl_updatePG();

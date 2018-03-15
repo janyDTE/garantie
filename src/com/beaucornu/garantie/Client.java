@@ -18,6 +18,9 @@ public class Client {
     private String code_postal;
     private String ville;
 
+    public Client() {
+    }
+
     public Client(int id_client, String nom_client, String prenom_client, String telephone, String adresse, String code_postal, String ville) {
         this.id_client = id_client;
         this.nom_client = nom_client;
@@ -28,8 +31,17 @@ public class Client {
         this.ville = ville;
     }
 
+    @Override
+    public String toString() {
+        return nom_client + " " + prenom_client + " (" + ville + ")";
+    }
+
     public int getId_client() {
         return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
     }
 
     public String getNom_client() {
