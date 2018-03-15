@@ -10,28 +10,40 @@
           xmlns:fx="http://javafx.com/fxml" stylesheets="@suivi.css" alignment="center" hgap="10" vgap="10">
     <children>
 
-        <Label text="Ajouter un appareil vendu" style="bold"  GridPane.columnIndex="0" GridPane.rowIndex="0"
+        <Label text="Ajouter un appareil vendu"  GridPane.columnIndex="0" GridPane.rowIndex="0"
                GridPane.columnSpan="2" fx:id="sceneTitle"/>
 
-        <AutoFillTextBox GridPane.columnIndex="0" GridPane.rowIndex="1"
-                  GridPane.columnSpan="2" fx:id="modeleTextBox"></AutoFillTextBox>
+        <Label text="Choisir un modèle : "  GridPane.columnIndex="0" GridPane.rowIndex="1"
+               GridPane.columnSpan="2" fx:id="modeleLabel"/>
 
         <AutoFillTextBox GridPane.columnIndex="0" GridPane.rowIndex="2"
+                  GridPane.columnSpan="2" fx:id="modeleTextBox"></AutoFillTextBox>
+
+        <Button  GridPane.columnIndex="3" GridPane.rowIndex="2"
+                 GridPane.columnSpan="1" text="+" fx:id="addModele" onAction="#openNewModeleForm"></Button>
+
+        <Label text="Choisir un client : "  GridPane.columnIndex="0" GridPane.rowIndex="3"
+               GridPane.columnSpan="2" fx:id="clientLabel"/>
+
+        <AutoFillTextBox GridPane.rowIndex="4"
                          GridPane.columnSpan="2" fx:id="clientTextBox"></AutoFillTextBox>
 
-        <TextField promptText="No de serie" GridPane.rowIndex="3"
+        <Button  GridPane.columnIndex="3" GridPane.rowIndex="4"
+                 GridPane.columnSpan="1" text="+" fx:id="addClient" onAction="#openNewClientForm"></Button>
+
+        <TextField promptText="No de serie" GridPane.rowIndex="5"
                    GridPane.columnSpan="2" fx:id="no_serie_text"></TextField>
 
-        <TextField promptText="No de produit" GridPane.rowIndex="4"
+        <TextField promptText="No de produit" GridPane.rowIndex="6"
                    GridPane.columnSpan="2" fx:id="no_produit_text"></TextField>
 
-        <DatePicker promptText="Date de facturation" GridPane.rowIndex="5"
+        <DatePicker promptText="Date de facturation" GridPane.rowIndex="7"
                     GridPane.columnSpan="2" fx:id="date_facturationPicker"></DatePicker>
 
-        <Button GridPane.columnIndex="0" GridPane.rowIndex="7"
+        <Button GridPane.columnIndex="0" GridPane.rowIndex="9"
                 GridPane.columnSpan="2" text="Valider" onAction="#handleButtonAction" fx:id="validateBtn" />
 
-        <TextArea GridPane.rowIndex="8" GridPane.columnSpan="2" visible="false" prefHeight="20" prefWidth="200"
+        <TextArea GridPane.rowIndex="10" GridPane.columnSpan="2" visible="false" prefHeight="20" prefWidth="200"
                   fx:id="okText"></TextArea>
 
     </children>

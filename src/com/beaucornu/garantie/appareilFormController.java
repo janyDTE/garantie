@@ -6,10 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +27,12 @@ public class appareilFormController implements Initializable {
 
     @FXML
     private AutoFillTextBox<Client> clientTextBox;
+
+    @FXML
+    private Button addModele;
+
+    @FXML
+    private Button addClient;
 
     @FXML
     private TextField no_serie_text;
@@ -98,6 +107,36 @@ public class appareilFormController implements Initializable {
         try {
             powerAutocompleteModeles();
             powerAutocompleteClients();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void openNewModeleForm(){
+        AppareilForm appareilForm = new AppareilForm();
+        Stage stage = new Stage();
+        try {
+            appareilForm.start(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void openNewClientForm(){
+        AppareilForm appareilForm = new AppareilForm();
+        Stage stage = new Stage();
+        try {
+            appareilForm.start(stage);
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
