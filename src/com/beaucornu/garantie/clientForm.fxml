@@ -1,0 +1,40 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.scene.layout.HBox?>
+<GridPane alignment="center" styleClass="background" hgap="10" vgap="10" stylesheets="@suivi.css"
+          fx:controller="com.beaucornu.garantie.clientFormController"
+          xmlns:fx="http://javafx.com/fxml"  >
+    <children>
+        <Button fx:id="backHome" onAction="#getBackHome" styleClass="button_home" GridPane.rowIndex="0" />
+
+        <Label styleClass="label-header" text="Ajouter un client"  GridPane.rowIndex="1" fx:id="sceneTitle"/>
+
+        <TextField promptText="Nom" GridPane.rowIndex="2" fx:id="nom_text" editable="true"/>
+
+        <TextField promptText="Prénom" GridPane.rowIndex="3" fx:id="prenom_text"/>
+
+        <TextField promptText="Téléphone" GridPane.rowIndex="4" fx:id="telephone_text"/>
+
+        <TextField promptText="Adresse" GridPane.rowIndex="5" fx:id="adresse_text"/>
+
+        <TextField promptText="Code postal" GridPane.rowIndex="6" fx:id="code_postal_text"/>
+
+        <TextField promptText="Ville" GridPane.rowIndex="7" fx:id="ville_text"/>
+
+        <HBox styleClass="hbox" GridPane.rowIndex="9">
+
+            <Button text="Retour" onAction="#backButtonAction" fx:id="backBtn" />
+
+            <Button text="Valider" onAction="#handleButtonAction" fx:id="validateBtn" />
+
+            <Button text="Modifier" onAction="#modifyButtonAction" fx:id="modifyBtn" />
+
+        </HBox>
+
+        <Label fx:id="okText" visible="false" GridPane.rowIndex="10" />
+    </children>
+</GridPane>

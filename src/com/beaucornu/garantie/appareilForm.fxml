@@ -1,50 +1,57 @@
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import com.beaucornu.garantie.AutoFillTextBox?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
-
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<GridPane fx:controller="com.beaucornu.garantie.appareilFormController"
-          xmlns:fx="http://javafx.com/fxml" stylesheets="@suivi.css" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<GridPane alignment="center" styleClass="background" hgap="10" vgap="10"  stylesheets="@suivi.css"
+          xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.beaucornu.garantie.appareilFormController">
     <children>
+        <Button fx:id="backHome" onAction="#getBackHome" styleClass="button_home" GridPane.rowIndex="0" />
 
-        <Label text="Ajouter un appareil vendu"  GridPane.columnIndex="0" GridPane.rowIndex="0"
-               GridPane.columnSpan="2" fx:id="sceneTitle"/>
+        <Label fx:id="sceneTitle" styleClass="label-header" text="Ajouter un appareil vendu" GridPane.rowIndex="1" />
 
-        <Label text="Choisir un modèle : "  GridPane.columnIndex="0" GridPane.rowIndex="1"
-               GridPane.columnSpan="2" fx:id="modeleLabel"/>
+        <Label fx:id="modeleLabel" text="Choisir un modèle : " GridPane.rowIndex="2" />
 
-        <AutoFillTextBox GridPane.columnIndex="0" GridPane.rowIndex="2"
-                  GridPane.columnSpan="2" fx:id="modeleTextBox"></AutoFillTextBox>
+        <HBox styleClass="hbox" GridPane.rowIndex="3">
 
-        <Button  GridPane.columnIndex="3" GridPane.rowIndex="2"
-                 GridPane.columnSpan="1" text="+" fx:id="addModele" onAction="#openNewModeleForm"></Button>
+            <AutoFillTextBox fx:id="modeleTextBox" styleClass="text-field" />
 
-        <Label text="Choisir un client : "  GridPane.columnIndex="0" GridPane.rowIndex="3"
-               GridPane.columnSpan="2" fx:id="clientLabel"/>
+            <Button fx:id="addModele" onAction="#openNewModeleForm" styleClass="button_add" text="+" />
 
-        <AutoFillTextBox GridPane.rowIndex="4"
-                         GridPane.columnSpan="2" fx:id="clientTextBox"></AutoFillTextBox>
+        </HBox>
 
-        <Button  GridPane.columnIndex="3" GridPane.rowIndex="4"
-                 GridPane.columnSpan="1" text="+" fx:id="addClient" onAction="#openNewClientForm"></Button>
+        <Label fx:id="clientLabel" text="Choisir un client : " GridPane.rowIndex="4" />
 
-        <TextField promptText="No de serie" GridPane.rowIndex="5"
-                   GridPane.columnSpan="2" fx:id="no_serie_text"></TextField>
+        <HBox styleClass="hbox" GridPane.rowIndex="5">
 
-        <TextField promptText="No de produit" GridPane.rowIndex="6"
-                   GridPane.columnSpan="2" fx:id="no_produit_text"></TextField>
+            <AutoFillTextBox fx:id="clientTextBox" />
 
-        <DatePicker promptText="Date de facturation" GridPane.rowIndex="7"
-                    GridPane.columnSpan="2" fx:id="date_facturationPicker"></DatePicker>
+            <Button fx:id="addClient" onAction="#openNewClientForm" styleClass="button_add" text="+"/>
 
-        <Button GridPane.columnIndex="0" GridPane.rowIndex="9"
-                GridPane.columnSpan="2" text="Valider" onAction="#handleButtonAction" fx:id="validateBtn" />
+        </HBox>
 
-        <TextArea GridPane.rowIndex="10" GridPane.columnSpan="2" visible="false" prefHeight="20" prefWidth="200"
-                  fx:id="okText"></TextArea>
+        <TextField fx:id="no_serie_text" promptText="No de serie" styleClass="text-field" GridPane.rowIndex="6" />
+
+        <TextField fx:id="no_produit_text" promptText="No de produit" styleClass="text-field" GridPane.rowIndex="7" />
+
+        <DatePicker fx:id="date_facturationPicker" promptText="Date de facturation" GridPane.rowIndex="8" />
+
+        <HBox styleClass="hbox" GridPane.rowIndex="10">
+
+            <Button text="Retour" onAction="#backButtonAction" fx:id="backBtn" />
+
+            <Button text="Valider" onAction="#handleButtonAction" fx:id="validateBtn" />
+
+        </HBox>
+
+        <Label fx:id="okText" visible="false" GridPane.rowIndex="11" />
 
     </children>
 </GridPane>

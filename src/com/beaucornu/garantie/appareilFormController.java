@@ -1,15 +1,17 @@
 package com.beaucornu.garantie;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +23,9 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class appareilFormController implements Initializable {
+
+    @FXML
+    private Button backHome;
 
     @FXML
     private AutoFillTextBox<Modele> modeleTextBox;
@@ -44,7 +49,28 @@ public class appareilFormController implements Initializable {
     private DatePicker date_facturationPicker;
 
     @FXML
-    private TextArea okText;
+    private Label okText;
+
+    private static String modeleSelected = "";
+
+    @FXML
+    private void getBackHome(ActionEvent event){
+        //Main main = new Main();
+        //Stage stage = new Stage();
+        try {
+            //main.start(stage);
+            modeleSelected= "";
+            Node source = (Node) event.getSource();
+            Stage thisStage  = (Stage) source.getScene().getWindow();
+            //if you wanna handle an event OnCloseRequest(), add the following line for it not to be bypassed
+            //stage.getOnCloseRequest().handle(null);
+            thisStage.close();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
@@ -91,6 +117,7 @@ public class appareilFormController implements Initializable {
             okText.setVisible(true);
             okText.setText("Cet appareil vendu a été ajouté.");
             modeleTextBox.getTextbox().clear();
+            modeleSelected= "";
             clientTextBox.getTextbox().clear();
             no_serie_text.clear();
             no_produit_text.clear();
@@ -102,11 +129,32 @@ public class appareilFormController implements Initializable {
         }
     }
 
+    @FXML
+    private void backButtonAction(ActionEvent event){
+        getBackHome(event);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
+
         try {
             powerAutocompleteModeles();
+
+            if (!modeleSelected.equals("")){
+                modeleTextBox.getTextbox().setText(modeleSelected);
+            }
+
             powerAutocompleteClients();
+
+            // Variable to store the focus on stage load
+            final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+
+            backHome.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+                if(newValue && firstTime.get()){
+                    modeleTextBox.requestFocus(); // Delegate the focus to container
+                    firstTime.setValue(false); // Variable value changed for future references
+                }
+            });
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -115,32 +163,52 @@ public class appareilFormController implements Initializable {
     }
 
     @FXML
-    private void openNewModeleForm(){
-        AppareilForm appareilForm = new AppareilForm();
+    private void openNewModeleForm(ActionEvent event){
+        ModeleForm modeleForm = new ModeleForm();
         Stage stage = new Stage();
         try {
-            appareilForm.start(stage);
+            modeleForm.start(stage);
+            Node source = (Node) event.getSource();
+            Stage thisStage  = (Stage) source.getScene().getWindow();
+            //if you wanna handle an event OnCloseRequest(), add the following line for it not to be bypassed
+            //stage.getOnCloseRequest().handle(null);
+            thisStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
     }
 
     @FXML
-    private void openNewClientForm(){
-        AppareilForm appareilForm = new AppareilForm();
+    private void openNewClientForm(ActionEvent event){
+        ClientForm clientForm = new ClientForm();
         Stage stage = new Stage();
         try {
-            appareilForm.start(stage);
+            if (modeleTextBox.getText() != null){
+
+                modeleSelected = modeleTextBox.getText();
+            }
+            clientForm.start(stage);
+            //TODO to save the already chosen modele in a global variable
+            Node source = (Node) event.getSource();
+
+            Stage thisStage  = (Stage) source.getScene().getWindow();
+            //if you wanna handle an event OnCloseRequest(), add the following line for it not to be bypassed
+            //stage.getOnCloseRequest().handle(null);
+            thisStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
     }
 
@@ -178,7 +246,6 @@ public class appareilFormController implements Initializable {
             client.setVille(result.getString("ville"));
             clientsList.add(client);
         }
-        clientTextBox.setMinSize(150,25);
         clientTextBox.setData(clientsList);
     }
 

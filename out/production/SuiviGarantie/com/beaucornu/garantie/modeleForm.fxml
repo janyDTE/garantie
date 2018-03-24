@@ -1,0 +1,40 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import com.beaucornu.garantie.AutoFillTextBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<GridPane alignment="center" styleClass="background" hgap="10" vgap="10" stylesheets="@suivi.css"
+          fx:controller="com.beaucornu.garantie.modeleFormController"
+          xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Button fx:id="backHome" onAction="#getBackHome" styleClass="button_home" GridPane.rowIndex="0" />
+
+        <Label text="Ajouter un modèle d'appareil"  GridPane.rowIndex="1" styleClass="label-header"
+               fx:id="sceneTitle"/>
+
+        <Label text="Choisir un type d'appareil : "  GridPane.rowIndex="2" fx:id="appareilTypeLabel"/>
+
+        <HBox styleClass="hbox" GridPane.rowIndex="3">
+            <AutoFillTextBox fx:id="appareilTypeTextBox"/>
+
+            <Button text="+" fx:id="addAppareilType" onAction="#openNewAppareilTypeForm"/>
+        </HBox>
+
+        <TextField promptText="Référence" GridPane.rowIndex="4" fx:id="reference_text"/>
+
+        <HBox styleClass="hbox" GridPane.rowIndex="6">
+
+            <Button text="Retour" onAction="#backButtonAction" fx:id="backBtn" />
+
+            <Button text="Valider" onAction="#handleButtonAction" fx:id="validateBtn" />
+
+        </HBox>
+
+        <Label GridPane.rowIndex="7" visible="false" fx:id="okText"/>
+
+    </children>
+</GridPane>

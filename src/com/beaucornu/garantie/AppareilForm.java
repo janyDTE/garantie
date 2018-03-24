@@ -33,15 +33,15 @@ import java.util.logging.Logger;
 
 public class AppareilForm extends Application {
 
-
     @Override
     public void start(Stage primaryStage) throws SQLException, ClassNotFoundException, IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("appareilForm.fxml"));
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
+        //Set up instance instead of using static load() method
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("appareilForm.fxml"));
+        Parent root = loader.load();
 
         primaryStage.setTitle("Ajouter un appareil vendu");
-        primaryStage.setScene(new Scene(root, 500, 400));
+        primaryStage.setScene(new Scene(root, 700, 600));
         primaryStage.show();
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.beaucornu.garantie.AutoFillTextBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<GridPane alignment="center" styleClass="background" hgap="10" vgap="10"  stylesheets="@suivi.css"
+          xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.beaucornu.garantie.searchPageController">
+    <children>
+        <Button fx:id="backHome" onAction="#getBackHome" styleClass="button_home" GridPane.rowIndex="0" />
+
+        <Label fx:id="sceneTitle" styleClass="label-header" text="Rechercher..." GridPane.rowIndex="1" />
+
+        <Label text="... un client" GridPane.rowIndex="2" />
+
+        <HBox styleClass="hbox" GridPane.rowIndex="3">
+
+            <AutoFillTextBox fx:id="clientSearchTextBox" />
+
+            <Button onAction="#openSelectedClientForm" styleClass="button_form" />
+
+            <Button styleClass="button_list"/>
+
+        </HBox>
+
+        <HBox styleClass="hbox" GridPane.rowIndex="10">
+
+            <Button text="Retour" onAction="#backButtonAction" fx:id="backBtn" />
+
+        </HBox>
+
+    </children>
+</GridPane>

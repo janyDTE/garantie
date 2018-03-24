@@ -1,28 +1,25 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="com.beaucornu.garantie.mainController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane hgap="10" styleClass="background" stylesheets="@suivi.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.121"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beaucornu.garantie.mainController">
     <children>
 
-        <Label text="Bienvenue sur cette UI !!" GridPane.columnIndex="0" GridPane.rowIndex="0"
-               GridPane.columnSpan="2" fx:id="sceneTitle"/>
-        <Button GridPane.columnIndex="0" GridPane.rowIndex="1"
-                GridPane.columnSpan="2" text="Nouvelle vente" onAction="#handleButtonAction1" fx:id="addVenteBtn" />
-        <Button GridPane.columnIndex="0" GridPane.rowIndex="2"
-                GridPane.columnSpan="2" text="Nouvelle intervention" onAction="#handleButtonAction1" fx:id="addInterventionBtn" />
-        <!--<Button GridPane.columnIndex="0" GridPane.rowIndex="3"-->
-                <!--GridPane.columnSpan="2" text="Ajouter un modèle d'appareil" onAction="#handleButtonAction" fx:id="btn3" />-->
-        <!--<Button GridPane.columnIndex="0" GridPane.rowIndex="4"-->
-                <!--GridPane.columnSpan="2" text="Ajouter un client" onAction="#handleButtonAction" fx:id="btn4" />-->
-        <!--<Button GridPane.columnIndex="0" GridPane.rowIndex="5"-->
-                <!--GridPane.columnSpan="2" text="Ajouter un type de produit" onAction="#handleButtonAction" fx:id="btn5" />-->
-        <Button GridPane.columnIndex="0" GridPane.rowIndex="6"
-                GridPane.columnSpan="2" text="Liste d'appareil vendus" onAction="#handleButtonAction1" fx:id="listVentesBtn" />
-        <Button GridPane.columnIndex="0" GridPane.rowIndex="7"
-                GridPane.columnSpan="2" text="Liste des clients" onAction="#handleButtonAction1" fx:id="listClientsBtn" />
+        <Label fx:id="sceneTitle" text="Bienvenue sur cette UI !!" styleClass="label-header" GridPane.rowIndex="0" />
+
+        <Button fx:id="addVenteBtn" onAction="#openNewAppareilForm" styleClass="button_main" text="Nouvelle vente"
+                GridPane.rowIndex="1"/>
+
+        <Button fx:id="addInterventionBtn" styleClass="button_main" text="Nouvelle intervention" GridPane.rowIndex="2" />
+
+        <Button fx:id="searchBtn" onAction="#openSearchStage" styleClass="button_main" text="Rechercher"
+                GridPane.rowIndex="6" />
+
+        <Button fx:id="listClientsBtn" styleClass="button_main" text="Liste des clients"
+                GridPane.rowIndex="7" />
 
     </children>
 </GridPane>

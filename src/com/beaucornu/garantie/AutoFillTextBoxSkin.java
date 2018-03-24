@@ -305,7 +305,7 @@ public class AutoFillTextBoxSkin<T> extends SkinBase<AutoFillTextBox<T>>
      * textbox.resize(width, height);
      * positionInArea(textbox, 0.0, 0.0, width, height, 0.0d, HPos.CENTER, VPos.CENTER);
      *
-     * } */
+     * }
     /**
      * A Popup containing Listview is trigged from this function This function
      * automatically resize it's height and width according to the width of
